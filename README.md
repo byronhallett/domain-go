@@ -10,33 +10,33 @@ go get -u github.com/byronhallett/domain-go
 package main
 
 import (
-	"log"
+  "log"
 
-	"github.com/davecgh/go-spew/spew"
+  "github.com/davecgh/go-spew/spew"
 
-	domain "github.com/byronhallett/domain-go"
-	types "github.com/byronhallett/domain-go/types"
+  domain "github.com/byronhallett/domain-go"
+  types "github.com/byronhallett/domain-go/types"
 )
 
 func main() {
-	session, err := domain.NewSession(
-		"client_**********************", "secret_************************",
-	)
-	if err != nil {
-		log.Fatalln(err)
-	}
+  session, err := domain.NewSession(
+    "client_**********************", "secret_************************",
+  )
+  if err != nil {
+    log.Fatalln(err)
+  }
 
-	results, err := session.ResidentialSearch(types.SearchParameters{
-		Locations: []types.SearchLocation{
-			types.SearchLocation{
-				Suburb:                    "Summer Hill",
-				IncludeSurroundingSuburbs: true,
-			},
-		},
-	})
-	if err != nil {
-		log.Fatalln(err)
-	}
-	spew.Dump(results.Listings)
+  results, err := session.ResidentialSearch(types.SearchParameters{
+    Locations: []types.SearchLocation{
+      types.SearchLocation{
+        Suburb:                    "Summer Hill",
+        IncludeSurroundingSuburbs: true,
+      },
+    },
+  })
+  if err != nil {
+    log.Fatalln(err)
+  }
+  spew.Dump(results.Listings)
 }
 ```
