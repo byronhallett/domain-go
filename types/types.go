@@ -1,4 +1,4 @@
-package domain
+package types
 
 type SearchParameters struct {
 	ListingType       ListingType      `json:"listingType"`

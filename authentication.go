@@ -17,7 +17,7 @@ type accessResponse struct {
 }
 
 // GetAccessToken gets the token which can be used in future api calls
-func GetAccessToken(clientID string, secret string) (string, error) {
+func getAccessToken(clientID string, secret string) (string, error) {
 	values := url.Values{
 		"grant_type": []string{"client_credentials"},
 		"scope":      []string{"api_listings_read", "api_agencies_read"},
