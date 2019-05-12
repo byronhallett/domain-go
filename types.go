@@ -159,6 +159,7 @@ type ListingData struct {
 	InspectionSchedule InspectionSchedule `json:"inspectionSchedule"`
 	SoldData           SoldData           `json:"soldData"`
 	ListingSlug        string             `json:"listingSlug"`
+	UpdatedSince       string             `json:"updatedSince"`
 }
 
 type ProjectData struct {
