@@ -1,188 +1,188 @@
 package types
 
 type SearchParameters struct {
-	ListingType       ListingType      `json:"listingType"`
-	PropertyTypes     string           `json:"propertyTypes"`
-	PropertyFeatures  string           `json:"propertyFeatures"`
-	ListingAttributes string           `json:"listingAttributes"`
-	MinBedrooms       float64          `json:"minBedrooms"`
-	MaxBedrooms       float64          `json:"maxBedrooms"`
-	MinBathrooms      float64          `json:"minBathrooms"`
-	MaxBathrooms      float64          `json:"maxBathrooms"`
-	MinCarspaces      int              `json:"minCarspaces"`
-	MaxCarspaces      int              `json:"maxCarspaces"`
-	MinPrice          int              `json:"minPrice"`
-	MaxPrice          int              `json:"maxPrice"`
-	MinLandArea       int              `json:"minLandArea"`
-	MaxLandArea       int              `json:"maxLandArea"`
-	AdvertiserIds     []int            `json:"advertiserIds"`
-	AdIDs             []int            `json:"adIds"`
-	ExcludeAdIds      []int            `json:"excludeAdIds"`
-	Locations         []SearchLocation `json:"locations"`
-	LocationTerms     string           `json:"locationTerms"`
-	Keywords          []string         `json:"keywords"`
-	InspectionFrom    string           `json:"inspectionFrom"`
-	InspectionTo      string           `json:"inspectionTo"`
-	AuctionFrom       string           `json:"auctionFrom"`
-	AuctionTo         string           `json:"auctionTo"`
-	Sort              NullableSortBy   `json:"sort"`
-	Page              int              `json:"page"`
-	PageSize          int              `json:"pageSize"`
-	GeoWindow         GeoWindow        `json:"geoWindow"`
+	ListingType       ListingType      `json:"listingType,omitempty"`
+	PropertyTypes     string           `json:"propertyTypes,omitempty"`
+	PropertyFeatures  string           `json:"propertyFeatures,omitempty"`
+	ListingAttributes string           `json:"listingAttributes,omitempty"`
+	MinBedrooms       float64          `json:"minBedrooms,omitempty"`
+	MaxBedrooms       float64          `json:"maxBedrooms,omitempty"`
+	MinBathrooms      float64          `json:"minBathrooms,omitempty"`
+	MaxBathrooms      float64          `json:"maxBathrooms,omitempty"`
+	MinCarspaces      int              `json:"minCarspaces,omitempty"`
+	MaxCarspaces      int              `json:"maxCarspaces,omitempty"`
+	MinPrice          int              `json:"minPrice,omitempty"`
+	MaxPrice          int              `json:"maxPrice,omitempty"`
+	MinLandArea       int              `json:"minLandArea,omitempty"`
+	MaxLandArea       int              `json:"maxLandArea,omitempty"`
+	AdvertiserIds     []int            `json:"advertiserIds,omitempty"`
+	AdIDs             []int            `json:"adIds,omitempty"`
+	ExcludeAdIds      []int            `json:"excludeAdIds,omitempty"`
+	Locations         []SearchLocation `json:"locations,omitempty"`
+	LocationTerms     string           `json:"locationTerms,omitempty"`
+	Keywords          []string         `json:"keywords,omitempty"`
+	InspectionFrom    string           `json:"inspectionFrom,omitempty"`
+	InspectionTo      string           `json:"inspectionTo,omitempty"`
+	AuctionFrom       string           `json:"auctionFrom,omitempty"`
+	AuctionTo         string           `json:"auctionTo,omitempty"`
+	Sort              NullableSortBy   `json:"sort,omitempty"`
+	Page              int              `json:"page,omitempty"`
+	PageSize          int              `json:"pageSize,omitempty"`
+	GeoWindow         GeoWindow        `json:"geoWindow,omitempty"`
 }
 
 type SearchLocation struct {
-	State                     string `json:"state"`
-	Region                    string `json:"region"`
-	Area                      string `json:"area"`
-	Suburb                    string `json:"suburb"`
-	PostCode                  string `json:"postCode"`
-	IncludeSurroundingSuburbs bool   `json:"includeSurroundingSuburbs"`
+	State                     string `json:"state,omitempty"`
+	Region                    string `json:"region,omitempty"`
+	Area                      string `json:"area,omitempty"`
+	Suburb                    string `json:"suburb,omitempty"`
+	PostCode                  string `json:"postCode,omitempty"`
+	IncludeSurroundingSuburbs bool   `json:"includeSurroundingSuburbs,omitempty"`
 }
 
 type NullableSortBy struct {
-	SortKey     SortKey   `json:"sortKey"`
-	Direction   Direction `json:"direction"`
-	ProximityTo GeoPoint  `json:"proximityTo"`
+	SortKey     SortKey   `json:"sortKey,omitempty"`
+	Direction   Direction `json:"direction,omitempty"`
+	ProximityTo GeoPoint  `json:"proximityTo,omitempty"`
 }
 
 type GeoWindow struct {
-	Box     Box     `json:"box"`
-	Circle  Circle  `json:"circle"`
-	Polygon Polygon `json:"polygon"`
+	Box     Box     `json:"box,omitempty"`
+	Circle  Circle  `json:"circle,omitempty"`
+	Polygon Polygon `json:"polygon,omitempty"`
 }
 type GeoPoint struct {
-	Lat float64 `json:"lat"`
-	Lon float64 `json:"lon"`
+	Lat float64 `json:"lat,omitempty"`
+	Lon float64 `json:"lon,omitempty"`
 }
 type Box struct {
-	TopLeft     GeoPoint `json:"topLeft"`
-	BottomRight GeoPoint `json:"bottomRight"`
+	TopLeft     GeoPoint `json:"topLeft,omitempty"`
+	BottomRight GeoPoint `json:"bottomRight,omitempty"`
 }
 type Circle struct {
-	Center         GeoPoint `json:"center"`
-	RadiusInMeters int      `json:"radiusInMeters"`
+	Center         GeoPoint `json:"center,omitempty"`
+	RadiusInMeters int      `json:"radiusInMeters,omitempty"`
 }
 type Polygon struct {
-	Points []GeoPoint `json:"points"`
+	Points []GeoPoint `json:"points,omitempty"`
 }
 
 type Contact struct {
-	Name     string `json:"name"`
-	PhotoUrl string `json:"photoUrl"`
+	Name     string `json:"name,omitempty"`
+	PhotoUrl string `json:"photoUrl,omitempty"`
 }
 type Advertiser struct {
-	Type               Source    `json:"type"`
-	ID                 int       `json:"id"`
-	Name               string    `json:"name"`
-	LogoURL            string    `json:"logoURL"`
-	PreferredColourHex string    `json:"preferredColourHex"`
-	BannerUrl          string    `json:"bannerUrl"`
-	Contacts           []Contact `json:"contacts"`
+	Type               Source    `json:"type,omitempty"`
+	ID                 int       `json:"id,omitempty"`
+	Name               string    `json:"name,omitempty"`
+	LogoURL            string    `json:"logoURL,omitempty"`
+	PreferredColourHex string    `json:"preferredColourHex,omitempty"`
+	BannerUrl          string    `json:"bannerUrl,omitempty"`
+	Contacts           []Contact `json:"contacts,omitempty"`
 }
 
 type Media struct {
-	Category MediaCategory `json:"category"`
-	Url      string        `json:"url"`
+	Category MediaCategory `json:"category,omitempty"`
+	Url      string        `json:"url,omitempty"`
 }
 
 type PriceDetails struct {
-	Price        int    `json:"price"`
-	PriceFrom    int    `json:"priceFrom"`
-	PriceTo      int    `json:"priceTo"`
-	DisplayPrice string `json:"displayPrice"`
+	Price        int    `json:"price,omitempty"`
+	PriceFrom    int    `json:"priceFrom,omitempty"`
+	PriceTo      int    `json:"priceTo,omitempty"`
+	DisplayPrice string `json:"displayPrice,omitempty"`
 }
 
 type PropertyDetails struct {
-	State              State          `json:"state"`
-	Features           []Feature      `json:"features"`
-	PropertyType       PropertyType   `json:"propertyType"`
-	AllPropertyTypes   []PropertyType `json:"allPropertyTypes"`
-	Bathrooms          float64        `json:"bathrooms"`
-	Bedrooms           float64        `json:"bedrooms"`
-	Carspaces          int            `json:"carspaces"`
-	UnitNumber         string         `json:"unitNumber"`
-	StreetNumber       string         `json:"streetNumber"`
-	Street             string         `json:"street"`
-	Area               string         `json:"area"`
-	Region             string         `json:"region"`
-	Suburb             string         `json:"suburb"`
-	Postcode           string         `json:"postcode"`
-	DisplayableAddress string         `json:"displayableAddress"`
-	Latitude           float64        `json:"latitude"`
-	Longitude          float64        `json:"longitude"`
-	LandArea           float64        `json:"landArea"`
-	BuildingArea       float64        `json:"buildingArea"`
-	OnlyShowProperties []string       `json:"onlyShowProperties"`
-	DisplayAddressType string         `json:"displayAddressType"`
-	IsRural            bool           `json:"isRural"`
-	IsNew              bool           `json:"isNew"`
+	State              State          `json:"state,omitempty"`
+	Features           []Feature      `json:"features,omitempty"`
+	PropertyType       PropertyType   `json:"propertyType,omitempty"`
+	AllPropertyTypes   []PropertyType `json:"allPropertyTypes,omitempty"`
+	Bathrooms          float64        `json:"bathrooms,omitempty"`
+	Bedrooms           float64        `json:"bedrooms,omitempty"`
+	Carspaces          int            `json:"carspaces,omitempty"`
+	UnitNumber         string         `json:"unitNumber,omitempty"`
+	StreetNumber       string         `json:"streetNumber,omitempty"`
+	Street             string         `json:"street,omitempty"`
+	Area               string         `json:"area,omitempty"`
+	Region             string         `json:"region,omitempty"`
+	Suburb             string         `json:"suburb,omitempty"`
+	Postcode           string         `json:"postcode,omitempty"`
+	DisplayableAddress string         `json:"displayableAddress,omitempty"`
+	Latitude           float64        `json:"latitude,omitempty"`
+	Longitude          float64        `json:"longitude,omitempty"`
+	LandArea           float64        `json:"landArea,omitempty"`
+	BuildingArea       float64        `json:"buildingArea,omitempty"`
+	OnlyShowProperties []string       `json:"onlyShowProperties,omitempty"`
+	DisplayAddressType string         `json:"displayAddressType,omitempty"`
+	IsRural            bool           `json:"isRural,omitempty"`
+	IsNew              bool           `json:"isNew,omitempty"`
 }
 
 type AuctionSchedule struct {
-	Time            string `json:"time"`
-	AuctionLocation string `json:"auctionLocation"`
+	Time            string `json:"time,omitempty"`
+	AuctionLocation string `json:"auctionLocation,omitempty"`
 }
 
 type Times struct {
-	OpeningTime string `json:"openingTime"`
-	ClosingTime string `json:"closingTime"`
+	OpeningTime string `json:"openingTime,omitempty"`
+	ClosingTime string `json:"closingTime,omitempty"`
 }
 
 type InspectionSchedule struct {
-	ByAppointment bool  `json:"byAppointment"`
-	Recurring     bool  `json:"recurring"`
-	Times         Times `json:"times"`
+	ByAppointment bool    `json:"byAppointment,omitempty"`
+	Recurring     bool    `json:"recurring,omitempty"`
+	Times         []Times `json:"times,omitempty"`
 }
 type SoldData struct {
-	Source     Source     `json:"source"`
-	SaleMethod SaleMethod `json:"saleMethod"`
-	SoldDate   string     `json:"soldDate"`
-	SoldPrice  int        `json:"soldPrice"`
+	Source     Source     `json:"source,omitempty"`
+	SaleMethod SaleMethod `json:"saleMethod,omitempty"`
+	SoldDate   string     `json:"soldDate,omitempty"`
+	SoldPrice  int        `json:"soldPrice,omitempty"`
 }
 
 type ListingData struct {
-	PromoType          PromoLevel         `json:"promoType"`
-	ListingType        ListingType        `json:"listingType"`
-	ID                 int                `json:"id"`
-	ProjectID          int                `json:"projectID"`
-	Advertiser         Advertiser         `json:"advertiser"`
-	PriceDetails       PriceDetails       `json:"priceDetails"`
-	Media              []Media            `json:"media"`
-	PropertyDetails    PropertyDetails    `json:"propertyDetails"`
-	Headline           string             `json:"headline"`
-	SummaryDescription string             `json:"summaryDescription"`
-	HasFloorplan       bool               `json:"hasFloorplan"`
-	HasVideo           bool               `json:"hasVideo"`
-	Labels             []string           `json:"labels"`
-	AuctionSchedule    AuctionSchedule    `json:"auctionSchedule"`
-	InspectionSchedule InspectionSchedule `json:"inspectionSchedule"`
-	SoldData           SoldData           `json:"soldData"`
-	ListingSlug        string             `json:"listingSlug"`
-	UpdatedSince       string             `json:"updatedSince"`
+	PromoType          PromoLevel         `json:"promoType,omitempty"`
+	ListingType        ListingType        `json:"listingType,omitempty"`
+	ID                 int                `json:"id,omitempty"`
+	ProjectID          int                `json:"projectID,omitempty"`
+	Advertiser         Advertiser         `json:"advertiser,omitempty"`
+	PriceDetails       PriceDetails       `json:"priceDetails,omitempty"`
+	Media              []Media            `json:"media,omitempty"`
+	PropertyDetails    PropertyDetails    `json:"propertyDetails,omitempty"`
+	Headline           string             `json:"headline,omitempty"`
+	SummaryDescription string             `json:"summaryDescription,omitempty"`
+	HasFloorplan       bool               `json:"hasFloorplan,omitempty"`
+	HasVideo           bool               `json:"hasVideo,omitempty"`
+	Labels             []string           `json:"labels,omitempty"`
+	AuctionSchedule    AuctionSchedule    `json:"auctionSchedule,omitempty"`
+	InspectionSchedule InspectionSchedule `json:"inspectionSchedule,omitempty"`
+	SoldData           SoldData           `json:"soldData,omitempty"`
+	ListingSlug        string             `json:"listingSlug,omitempty"`
+	UpdatedSince       string             `json:"updatedSince,omitempty"`
 }
 
 type ProjectData struct {
-	PromoLevel         PromoLevel `json:"promoLevel"`
-	State              State      `json:"state"`
-	ID                 int        `json:"id"`
-	Name               string     `json:"name"`
-	BannerUrl          string     `json:"bannerUrl"`
-	PreferredColorHex  string     `json:"preferredColorHex"`
-	LogoUrl            string     `json:"logoUrl"`
-	Labels             []string   `json:"labels"`
-	DisplayableAddress string     `json:"displayableAddress"`
-	Suburb             string     `json:"suburb"`
-	Features           []Feature  `json:"features"`
-	Media              []Media    `json:"media"`
-	ProjectSlug        string     `json:"projectSlug"`
+	PromoLevel         PromoLevel `json:"promoLevel,omitempty"`
+	State              State      `json:"state,omitempty"`
+	ID                 int        `json:"id,omitempty"`
+	Name               string     `json:"name,omitempty"`
+	BannerUrl          string     `json:"bannerUrl,omitempty"`
+	PreferredColorHex  string     `json:"preferredColorHex,omitempty"`
+	LogoUrl            string     `json:"logoUrl,omitempty"`
+	Labels             []string   `json:"labels,omitempty"`
+	DisplayableAddress string     `json:"displayableAddress,omitempty"`
+	Suburb             string     `json:"suburb,omitempty"`
+	Features           []Feature  `json:"features,omitempty"`
+	Media              []Media    `json:"media,omitempty"`
+	ProjectSlug        string     `json:"projectSlug,omitempty"`
 }
 
 type SearchResult struct {
-	Type     ResultType    `json:"type"`
-	Listing  ListingData   `json:"listing"`
-	Listings []ListingData `json:"listings"`
-	Project  ProjectData   `json:"project"`
+	Type     ResultType    `json:"type,omitempty"`
+	Listing  ListingData   `json:"listing,omitempty"`
+	Listings []ListingData `json:"listings,omitempty"`
+	Project  ProjectData   `json:"project,omitempty"`
 }
 type Feature string
 type ListingType string

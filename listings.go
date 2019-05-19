@@ -12,7 +12,8 @@ import (
 const residentialURL = "https://api.domain.com.au/v1/listings/residential/_search"
 
 // ResidentialSearch searches for residential listings...
-func (s *Session) ResidentialSearch(params types.SearchParameters) (*types.SearchResult, error) {
+func (s *Session) ResidentialSearch(params types.SearchParameters) (*[]types.SearchResult, error) {
+
 	body, err := json.Marshal(params)
 	if err != nil {
 		return nil, err
@@ -28,8 +29,7 @@ func (s *Session) ResidentialSearch(params types.SearchParameters) (*types.Searc
 		return nil, err
 	}
 	defer response.Body.Close()
-
-	results := new(types.SearchResult)
+	results := new([]types.SearchResult)
 	jsonData, _ := ioutil.ReadAll(response.Body)
 	err = json.Unmarshal(jsonData, results)
 	if err != nil {
