@@ -1,6 +1,10 @@
 package types
 
 const (
+	MaxPageSize int = 200
+)
+
+const (
 	Unrecognised              Feature = "Unrecognised"
 	AirConditioning           Feature = "AirConditioning"
 	BuiltInWardrobes          Feature = "BuiltInWardrobes"
