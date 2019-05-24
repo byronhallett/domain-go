@@ -16,16 +16,24 @@ var session *domain.Session
 func search() {
 	locations := []types.SearchLocation{
 		types.SearchLocation{
-			State:  "NSW",
+			Area:   "Sydney City",
+			Region: "Sydney Region",
+		},
+		types.SearchLocation{
+			Area:   "Eastern Suburbs",
+			Region: "Sydney Region",
+		},
+		types.SearchLocation{
+			Area:   "Inner West",
 			Region: "Sydney Region",
 		},
 	}
 	params := types.SearchParameters{
 		ListingType: "Rent",
 		MinBedrooms: 2,
-		MinPrice:    300,
-		MaxPrice:    420,
-		Locations:   &locations,
+		MinPrice:    340,
+		MaxPrice:    450,
+		Locations:   locations,
 	}
 	results, err := session.ResidentialSearch(params)
 	if err != nil {
@@ -33,8 +41,8 @@ func search() {
 	}
 	for _, r := range *results {
 		detail := &r.Listing.PropertyDetails
-		fmt.Printf("%s, %s, %s, %s\n",
-			detail.UnitNumber, detail.StreetNumber, detail.Street, detail.Suburb)
+		fmt.Printf("%s %s, %s, %s\n",
+			detail.StreetNumber, detail.Street, detail.Suburb, detail.State)
 	}
 }
 
