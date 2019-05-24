@@ -11,6 +11,8 @@
 *.dylib
 
 .env
+out.txt
+search
 
 # Test binary, built with `go test -c`
 *.test
