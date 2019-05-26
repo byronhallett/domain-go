@@ -13,37 +13,26 @@ import (
 
 var session *domain.Session
 
-func search() {
-	locations := []types.SearchLocation{
-		types.SearchLocation{
-			Area:   "Sydney City",
-			Region: "Sydney Region",
-		},
-		types.SearchLocation{
-			Area:   "Eastern Suburbs",
-			Region: "Sydney Region",
-		},
-		types.SearchLocation{
-			Area:   "Inner West",
-			Region: "Sydney Region",
-		},
-	}
-	params := types.SearchParameters{
-		ListingType: "Rent",
-		MinBedrooms: 2,
-		MinPrice:    340,
-		MaxPrice:    450,
-		Locations:   locations,
-	}
-	results, err := session.ResidentialSearch(params)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	for _, r := range *results {
-		detail := &r.Listing.PropertyDetails
-		fmt.Printf("%s %s, %s, %s\n",
-			detail.StreetNumber, detail.Street, detail.Suburb, detail.State)
-	}
+var locations = []types.SearchLocation{
+	types.SearchLocation{
+		Area:   "Sydney City",
+		Region: "Sydney Region",
+	},
+	types.SearchLocation{
+		Area:   "Eastern Suburbs",
+		Region: "Sydney Region",
+	},
+	types.SearchLocation{
+		Area:   "Inner West",
+		Region: "Sydney Region",
+	},
+}
+var params = types.SearchParameters{
+	ListingType: "Rent",
+	MinBedrooms: 2,
+	MinPrice:    340,
+	MaxPrice:    450,
+	Locations:   locations,
 }
 
 func main() {
@@ -58,5 +47,14 @@ func main() {
 		log.Fatalln(err)
 	}
 	// Search and print results until last page
-	search()
+	results, err := session.ResidentialSearch(params)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	for _, r := range *results {
+		detail := &r.Listing.PropertyDetails
+		fmt.Printf("%s %s, %s, %s\n",
+			detail.StreetNumber, detail.Street, detail.Suburb, detail.State)
+	}
 }
